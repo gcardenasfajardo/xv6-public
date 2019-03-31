@@ -7,6 +7,11 @@
 #include "mmu.h"
 #include "proc.h"
 
+
+
+//getread
+static int readcount = 0;
+
 int
 sys_fork(void)
 {
@@ -89,3 +94,17 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+//wcupa syscall
+int
+sys_wcupa(void)
+{
+    readcount++;
+    return 1871;
+}
+
+int
+sys_getreadcount(void)
+{
+    return readcount;
+}
+
